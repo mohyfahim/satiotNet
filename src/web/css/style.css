@@ -1,5 +1,5 @@
 body {
-  background: #f69ec4;
+  background: #e1e1e1;
   font-family: "Lato", sans-serif;
 }
 h2 {
@@ -27,8 +27,7 @@ h2 {
   background: #fff;
   box-shadow: 0 2rem 2rem #00000080;
   min-height: 200px;
-  width: 100%;
-  max-width: 500px;
+  width: 90%;
   border-radius: 3px;
   overflow: hidden;
   padding: 20px;
@@ -54,11 +53,14 @@ h2 {
 }
 #one:checked ~ .panels #one-panel,
 #two:checked ~ .panels #two-panel,
+#four:checked ~ .panels #four-panel,
 #three:checked ~ .panels #three-panel {
   display: block;
 }
+
 #one:checked ~ .tabs #one-tab,
 #two:checked ~ .tabs #two-tab,
+#four:checked ~ .tabs #four-tab,
 #three:checked ~ .tabs #three-tab {
   background: #fff;
   color: #000;

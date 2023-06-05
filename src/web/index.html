@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript" src="eel.js"></script>
-    <script rel="text/javascript" href="index.js"></script>
-    <title> SatioNet</title>
+    <script rel="text/javascript" href="js/index.js"></script>
+    <title>SatioNet</title>
   </head>
   <body>
-    <h2>Pure CSS Tabs</h2>
     <div class="warpper">
       <input class="radio" id="one" name="group" type="radio" checked />
       <input class="radio" id="two" name="group" type="radio" />
       <input class="radio" id="three" name="group" type="radio" />
+      <input class="radio" id="four" name="group" type="radio" />
 
       <div class="tabs">
-        <label class="tab" id="one-tab" for="one">Tab1</label>
-        <label class="tab" id="two-tab" for="two">Tab2</label>
-        <label class="tab" id="three-tab" for="three">Tab3</label>
+        <label class="tab" id="one-tab" for="one">Constellation</label>
+        <label class="tab" id="two-tab" for="two">Stations</label>
+        <label class="tab" id="three-tab" for="three">Simulation Settings</label>
+        <label class="tab" id="four-tab" for="four">Results</label>
       </div>
 
       <div class="panels">
@@ -31,6 +32,10 @@
         <div class="panel" id="three-panel">
           <div class="panel-title">Title3</div>
           <p>Content3</p>
+        </div>
+        <div class="panel" id="four-panel">
+          <div class="panel-title">Title4</div>
+          <p>Content4</p>
         </div>
       </div>
     </div>

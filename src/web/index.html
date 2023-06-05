@@ -7,22 +7,45 @@
       rel="stylesheet"
       type="text/css"
     />
-    <title>SatioNet</title>
+    <title>شبیه ساز کیفیت خدمات منظومه ماهواره</title>
   </head>
   <body>
     <div class="container">
       <div class="wrapper">
         <ul class="steps">
-          <li class="is-active">Step 1</li>
-          <li>Step 2</li>
-          <li>Step 3</li>
+          <li class="is-active">منظومه</li>
+          <li>ایستگاه های زمینی</li>
+          <li>فرآیند</li>
+          <li>تنظیمات شبیه سازی</li>
         </ul>
         <form class="form-wrapper">
-          <fieldset class="section is-active">
-            <h3>Your Details</h3>
-            <input type="text" name="name" id="name" placeholder="Name" />
+          <fieldset class="section is-active" id="constellation-page">
+            <h3>جزئیات منظومه</h3>
+            <label for="tlefile">تشکیل منظومه از طریق بارگزاری فایل TLE</label>
+            <input type="checkbox" id="tlefile" name="tlefile" value="true" />
+            <br />
+            <br />
+            <label for="file" class="drop-container">
+              <span class="drop-title">فایل را اینجا بیاندازید</span>
+              یا
+              <input
+                type="file"
+                class="deactive-label"
+                disabled
+                name="file"
+                id="file"
+                placeholder="اسم"
+                multiple
+              />
+            </label>
+
+            <br />
+            <br />
+            <label class="fixed-label" for="name">اسم</label>
+            <input type="text" name="name" id="name" placeholder="اسم" />
+            <br />
+            <label class="fixed-label" for="email">email</label>
             <input type="text" name="email" id="email" placeholder="Email" />
-            <div class="button">Next</div>
           </fieldset>
           <fieldset class="section">
             <h3>Account Type</h3>
@@ -44,7 +67,6 @@
                 </label>
               </div>
             </div>
-            <div class="button">Next</div>
           </fieldset>
           <fieldset class="section">
             <h3>Choose a Password</h3>
@@ -60,12 +82,10 @@
               id="password2"
               placeholder="Re-enter Password"
             />
-            <input class="submit button" type="submit" value="Sign Up" />
           </fieldset>
           <fieldset class="section">
-            <h3>Account Created!</h3>
-            <p>Your account has now been created.</p>
-            <div class="button">Reset Form</div>
+            <h3>Aتنظیمات شبیه سازی</h3>
+            <div class="button">شروع شبیه سازی</div>
           </fieldset>
         </form>
       </div>

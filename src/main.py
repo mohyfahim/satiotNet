@@ -9,8 +9,10 @@ eel.init("web", allowed_extensions=[".js", ".html"])
 
 
 @eel.expose  # Expose this function to Javascript
-def say_hello_py(x):
-    print("Hello from %s" % x)
+def getFormData(json, fileMeta=None, fileContent=None):
+    print("json ", json)
+    print("file meta ", fileMeta)
+    print("file content size ", len(fileContent))
 
 
 def closeCallBack(path, ws):
@@ -18,8 +20,6 @@ def closeCallBack(path, ws):
     if path == "index.html":
         sys.exit(0)
 
-
-say_hello_py("Python World!")
 
 try:
     eel.start(

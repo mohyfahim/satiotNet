@@ -2,42 +2,77 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="eel.js"></script>
-    <script rel="text/javascript" href="js/index.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <title>SatioNet</title>
   </head>
   <body>
-    <div class="warpper">
-      <input class="radio" id="one" name="group" type="radio" checked />
-      <input class="radio" id="two" name="group" type="radio" />
-      <input class="radio" id="three" name="group" type="radio" />
-      <input class="radio" id="four" name="group" type="radio" />
-
-      <div class="tabs">
-        <label class="tab" id="one-tab" for="one">Constellation</label>
-        <label class="tab" id="two-tab" for="two">Stations</label>
-        <label class="tab" id="three-tab" for="three">Simulation Settings</label>
-        <label class="tab" id="four-tab" for="four">Results</label>
-      </div>
-
-      <div class="panels">
-        <div class="panel" id="one-panel">
-          <div class="panel-title">Title1</div>
-          <p>Content1</p>
-        </div>
-        <div class="panel" id="two-panel">
-          <div class="panel-title">Title2</div>
-          <p>Content2</p>
-        </div>
-        <div class="panel" id="three-panel">
-          <div class="panel-title">Title3</div>
-          <p>Content3</p>
-        </div>
-        <div class="panel" id="four-panel">
-          <div class="panel-title">Title4</div>
-          <p>Content4</p>
-        </div>
+    <div class="container">
+      <div class="wrapper">
+        <ul class="steps">
+          <li class="is-active">Step 1</li>
+          <li>Step 2</li>
+          <li>Step 3</li>
+        </ul>
+        <form class="form-wrapper">
+          <fieldset class="section is-active">
+            <h3>Your Details</h3>
+            <input type="text" name="name" id="name" placeholder="Name" />
+            <input type="text" name="email" id="email" placeholder="Email" />
+            <div class="button">Next</div>
+          </fieldset>
+          <fieldset class="section">
+            <h3>Account Type</h3>
+            <div class="row cf">
+              <div class="four col">
+                <input type="radio" name="r1" id="r1" checked />
+                <label for="r1">
+                  <h4>Designer</h4>
+                </label>
+              </div>
+              <div class="four col">
+                <input type="radio" name="r1" id="r2" /><label for="r2">
+                  <h4>Developer</h4>
+                </label>
+              </div>
+              <div class="four col">
+                <input type="radio" name="r1" id="r3" /><label for="r3">
+                  <h4>Project Manager</h4>
+                </label>
+              </div>
+            </div>
+            <div class="button">Next</div>
+          </fieldset>
+          <fieldset class="section">
+            <h3>Choose a Password</h3>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder="Re-enter Password"
+            />
+            <input class="submit button" type="submit" value="Sign Up" />
+          </fieldset>
+          <fieldset class="section">
+            <h3>Account Created!</h3>
+            <p>Your account has now been created.</p>
+            <div class="button">Reset Form</div>
+          </fieldset>
+        </form>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script src="js/index.js"></script>
+    <script type="text/javascript" src="eel.js"></script>
   </body>
 </html>

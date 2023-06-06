@@ -7,13 +7,7 @@ import eel
 # Set web files folder and optionally specify which file types to check for eel.expose()
 eel.init("web", allowed_extensions=[".js", ".html"])
 
-
-@eel.expose  # Expose this function to Javascript
-def getFormData(json, fileMeta=None, fileContent=None):
-    print("json ", json)
-    print("file meta ", fileMeta)
-    print("file content size ", len(fileContent))
-
+from utils.interface import *
 
 def closeCallBack(path, ws):
     print("closed ", path, " ws:", ws)

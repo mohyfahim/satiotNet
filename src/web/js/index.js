@@ -10,9 +10,26 @@ function getJsonValueFromForm() {
   return json;
 }
 
+function getBinaryStringFromFile(file) {
+  return new Promise((resolve) => {
+    console.log("start promise");
+    const reader = new FileReader();
+    reader.onload = function (evt) {
+      console.log("start promise4");
+
+      const metadata = { name: file.name, type: file.type, size: file.size };
+      const content = evt.target.result;
+      resolve({ meta: metadata, content: content });
+    };
+    console.log("start promise2");
+    console.log(file);
+    reader.readAsBinaryString(file);
+    console.log("start promise3");
+  });
+}
+
 $(document).ready(function () {
   function dropHandler(ev) {
-    console.log("drop");
     ev.preventDefault();
     if (ev.dataTransfer.items) {
       let ff = new DataTransfer();
@@ -25,7 +42,7 @@ $(document).ready(function () {
           ff.items.add(file);
         }
       });
-      document.getElementById("file").files = ff.files;
+      ev.target.querySelector("input[type=file]").files = ff.files;
     } else {
       let ff = new DataTransfer();
       // Use DataTransfer interface to access the file(s)
@@ -33,7 +50,7 @@ $(document).ready(function () {
         ff.items.add(file);
         console.log(`… file[${i}].name = ${file.name}`);
       });
-      document.getElementById("file").files = ff.files;
+      ev.target.querySelector("input[type=file]").files = ff.files;
     }
   }
 
@@ -52,7 +69,7 @@ $(document).ready(function () {
     false
   );
 
-  $(".form-wrapper .button").click(function () {
+  $(".form-wrapper .button").click(async function () {
     var button = $(this);
     var currentSection = button.parents(".section");
     var currentSectionIndex = currentSection.index();
@@ -65,22 +82,20 @@ $(document).ready(function () {
     });
 
     if (currentSectionIndex === 3) {
-      var myFile = document.getElementById("file").files[0];
-      console.log(document.getElementById("file"));
-      if (myFile) {
-        const reader = new FileReader();
-        reader.onload = function (evt) {
-          const metadata = `name: ${myFile.name}, type: ${myFile.type}, size: ${myFile.size}, contents:`;
-          const content = evt.target.result;
-          let json = getJsonValueFromForm();
-          eel.getFormData(json, metadata, content);
-        };
-        reader.readAsBinaryString(myFile);
-      } else {
-        console.log("empty file");
-        let json = getJsonValueFromForm();
-        eel.getFormData(json);
+      console.log("start");
+      let files = document.querySelectorAll("input[type=file]");
+      let sendFile = [];
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].files[0]) {
+          let key = files[i].name;
+          let bfile = await getBinaryStringFromFile(files[i].files[0]);
+          sendFile.push({ key: key, file: bfile });
+        }
       }
+      console.log("end");
+
+      let json = getJsonValueFromForm();
+      eel.getFormData(json, JSON.stringify(sendFile));
       //TODO: go to result page
       $(document).find(".form-wrapper .section").first().addClass("is-active");
       $(document).find(".steps li").first().addClass("is-active");

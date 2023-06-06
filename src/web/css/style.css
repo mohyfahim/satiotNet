@@ -124,6 +124,7 @@ fieldset {
   padding: 0;
   background-color: #fff;
   text-align: center;
+  cursor: pointer;
 }
 
 .steps li:hover {

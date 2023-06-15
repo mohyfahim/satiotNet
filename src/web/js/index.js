@@ -95,7 +95,8 @@ $(document).ready(function () {
       console.log("end");
 
       let json = getJsonValueFromForm();
-      eel.getFormData(json, JSON.stringify(sendFile));
+      let resp = await eel.getFormData(json, JSON.stringify(sendFile))();
+      alert(resp);
       //TODO: go to result page
       $(document).find(".form-wrapper .section").first().addClass("is-active");
       $(document).find(".steps li").first().addClass("is-active");

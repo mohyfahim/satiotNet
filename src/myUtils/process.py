@@ -30,22 +30,23 @@ def process_states(states):
             tle.write(states["tleFile"]["content"])
     else:
         print("Generating TLEs...")
-        if states["info"]["ECCENTRICITY"] == 0:
-            states["info"]["ECCENTRICITY"] = 0.0000001
+        if states["tleInfo"]["ECCENTRICITY"] == 0:
+            states["tleInfo"]["ECCENTRICITY"] = 0.0000001
 
         satgen.generate_tles_from_scratch_manual(
             OUTPUT_PATH + "/tles.txt",
-            states["info"]["NICE_NAME"],
-            states["info"]["NUM_ORBS"],
-            states["info"]["NUM_SATS_PER_ORB"],
-            states["info"]["PHASE_DIFF"],
-            states["info"]["INCLINATION_DEGREE"],
-            states["info"]["ECCENTRICITY"],
-            states["info"]["ARG_OF_PERIGEE_DEGREE"],
-            states["info"]["MEAN_MOTION_REV_PER_DAY"],
+            states["tleInfo"]["NICE_NAME"],
+            states["tleInfo"]["NUM_ORBS"],
+            states["tleInfo"]["NUM_SATS_PER_ORB"],
+            states["tleInfo"]["PHASE_DIFF"],
+            states["tleInfo"]["INCLINATION_DEGREE"],
+            states["tleInfo"]["ECCENTRICITY"],
+            states["tleInfo"]["ARG_OF_PERIGEE_DEGREE"],
+            states["tleInfo"]["MEAN_MOTION_REV_PER_DAY"],
         )
 
     if states["hasGroundStationFile"] == True:
+        print("Generating ground stations...")
         GROUNDSTATION_PATH = INPUT_PATH + "/groundStations.txt"
         with open(GROUNDSTATION_PATH, "w") as gs:
             gs.write(states["groundStationFile"]["content"])

@@ -108,11 +108,20 @@ $(document).ready(function () {
       console.log("checked");
       $("#constellation-page input:text").prop("disabled", true);
       $("#constellation-page input:text").addClass("deactive-label");
+      $('#constellation-page input[type="number"]').prop("disabled", true);
+      $('#constellation-page input[type="number"]').addClass("deactive-label");
+      $("#constellation-page #PHASE_DIFF").prop("disabled", true);
+      $("#constellation-page #PHASE_DIFF").addClass("deactive-label");
+
       $("#constellation-page input:file").prop("disabled", false);
       $("#constellation-page input:file").removeClass("deactive-label");
     } else {
       $("#constellation-page input:text").prop("disabled", false);
       $("#constellation-page input:text").removeClass("deactive-label");
+      $('#constellation-page input[type="number"]').prop("disabled", false);
+      $('#constellation-page input[type="number"]').removeClass("deactive-label");
+      $("#constellation-page #PHASE_DIFF").prop("disabled", false);
+      $("#constellation-page #PHASE_DIFF").removeClass("deactive-label");
       $("#constellation-page input:file").prop("disabled", true);
       $("#constellation-page input:file").addClass("deactive-label");
     }
@@ -129,5 +138,21 @@ $(document).ready(function () {
   document.querySelectorAll(".drop-container").forEach(function (dc) {
     console.log("event added");
     dc.addEventListener("drop", dropHandler);
+  });
+
+  $("#rlAlgo input:checkbox").on('click', function() {
+    // in the handler, 'this' refers to the box clicked on
+    var $box = $(this);
+    if ($box.is(":checked")) {
+      // the name of the box is retrieved using the .attr() method
+      // as it is assumed and expected to be immutable
+      var group = "#rlAlgo input:checkbox";
+      // the checked state of the group/box on the other hand will change
+      // and the current value is retrieved using .prop() method
+      $(group).prop("checked", false);
+      $box.prop("checked", true);
+    } else {
+      $box.prop("checked", false);
+    }
   });
 });

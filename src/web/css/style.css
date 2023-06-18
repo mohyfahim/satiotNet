@@ -207,7 +207,7 @@ fieldset {
   appearance: none;
 }
 
-.form-wrapper input[type="text"],
+.form-wrapper input[type="text"],.form-wrapper input[type="number"],
 .form-wrapper input[type="password"] {
   border-radius: 10px;
   display: inline-block;

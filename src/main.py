@@ -7,7 +7,7 @@ import eel
 # Set web files folder and optionally specify which file types to check for eel.expose()
 eel.init("web", allowed_extensions=[".js", ".html"])
 
-from utils.interface import *
+from myUtils import interface
 
 def closeCallBack(path, ws):
     print("closed ", path, " ws:", ws)

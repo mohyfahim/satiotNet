@@ -41,11 +41,20 @@
 
             <br />
             <br />
-            <label class="fixed-label" for="name">اسم</label>
-            <input type="text" name="name" id="name" placeholder="اسم" />
+            <label class="fixed-label" for="NICE_NAME">نام منظومه</label>
+            <input type="text" name="NICE_NAME" id="NICE_NAME" placeholder="starlink" />
             <br />
-            <label class="fixed-label" for="email">email</label>
-            <input type="text" name="email" id="email" placeholder="Email" />
+            <label class="fixed-label" for="NUM_ORBS">تعداد مدار</label>
+            <input type="number" name="NUM_ORBS" id="NUM_ORBS" placeholder="72" />
+            <br />
+            <label class="fixed-label" for="NUM_SATS_PER_ORB">تعداد ماهواره در هر مدار</label>
+            <input type="number" name="NUM_SATS_PER_ORB" id="NUM_SATS_PER_ORB" placeholder="22" />
+            <br />
+            <label class="fixed-label" for="PHASE_DIFF">Phase diff</label>
+            <input type="checkbox" name="PHASE_DIFF" id="PHASE_DIFF" />
+            <br />
+            <label class="fixed-label" for="INCLINATION_DEGREE">زاویه شیب</label>
+            <input type="number" name="INCLINATION_DEGREE" id="INCLINATION_DEGREE" placeholder="72" />
           </fieldset>
           <fieldset class="section" id="groundstation-page">
             <h3>تنظیمات ایستگاه زمینی</h3>
@@ -58,6 +67,7 @@
                 id="gfile"
                 placeholder="فایل ایستگاه زمینی"
                 multiple
+                required="true"
               />
             </label>
           </fieldset>

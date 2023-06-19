@@ -148,15 +148,22 @@
             <div id="rlAlgo">
               <h4>Relay Algorithms</h4>
               <label class="fixed-label" for="algorithm_free_one_only_gs_relays">No ISLs, GSs Relay</label>
-              <input type="checkbox" name="algorithm_free_one_only_gs_relays" id="algorithm_free_one_only_gs_relays" checked />
+              <input type="checkbox" name="algorithm_free_one_only_gs_relays" id="algorithm_free_one_only_gs_relays"  />
               <br />
               <label class="fixed-label" for="algorithm_free_one_only_over_isls">ISLs, One interface per Sat</label>
-              <input type="checkbox" name="algorithm_free_one_only_over_isls" id="algorithm_free_one_only_over_isls" />
+              <input type="checkbox" name="algorithm_free_one_only_over_isls" id="algorithm_free_one_only_over_isls" checked />
               <br />
               <!-- <label class="fixed-label" for="algorithm_free_one_only_gs_relays">ISLs, Multiple interface per Sat</label>
               <input type="checkbox" name="algorithm_free_one_only_gs_relays" id="algorithm_free_one_only_gs_relays" />
               <br /> -->
             </div>
+            <br />
+            <label class="fixed-label" for="duration_s">مدت زمان شبیه سازی (s)</label>
+            <input type="number" name="duration_s" id="duration_s" placeholder="3600" />
+            <br />
+            <label class="fixed-label" for="time_step_ms">گام نمونه برداری (ms)</label>
+            <input type="number" name="time_step_ms" id="time_step_ms" placeholder="100" />
+          
           </fieldset>
           <fieldset class="section">
             <h3>Aتنظیمات شبیه سازی</h3>

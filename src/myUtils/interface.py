@@ -22,6 +22,10 @@ def getFormData(j, files=None):
         },
         "hasISL": False,
         "algo": "",
+        "SATELLITE_CONE_RADIUS_M": 0,
+        "ALTITUDE_M": 0,
+        "time_step_ms": 0,
+        "duration_s": 0,
     }
 
     j = json.loads(j)
@@ -60,4 +64,8 @@ def getFormData(j, files=None):
     else:
         states["algo"] = "algorithm_free_one_only_over_isls"
 
+    states["SATELLITE_CONE_RADIUS_M"] = int(j["SATELLITE_CONE_RADIUS_M"])
+    states["ALTITUDE_M"] = int(j["ALTITUDE_M"])
+    states["time_step_ms"] = int(j["time_step_ms"])
+    states["duration_s"] = int(j["duration_s"])
     return process.process_states(states)

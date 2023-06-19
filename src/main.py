@@ -3,9 +3,11 @@ import platform
 import sys
 import eel
 
+SRC_PATH = os.path.dirname(os.path.realpath(__file__))
 
+print(SRC_PATH)
 # Set web files folder and optionally specify which file types to check for eel.expose()
-eel.init("web", allowed_extensions=[".js", ".html"])
+eel.init(SRC_PATH + "/web", allowed_extensions=[".js", ".html"])
 
 from myUtils import interface
 

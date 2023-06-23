@@ -3,6 +3,15 @@ import json
 from myUtils import process
 
 
+@eel.expose
+def getResults(fileName, j):
+    states = {"src": 0, "dst": 0, "fileName": fileName}
+    j = json.loads(j)
+    states["src"] = int(j["src"])
+    states["dst"] = int(j["dst"])
+    return process.calcRTT(states)
+
+
 @eel.expose  # Expose this function to Javascript
 def getFormData(j, files=None):
     states = {

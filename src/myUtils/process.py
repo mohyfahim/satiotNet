@@ -5,9 +5,15 @@ import math
 
 from myUtils import defpaths
 
-sys.path.append(os.path.join(defpaths.MYUTILS_PATH, "../../hypatia/satgenpy"))
+SATGEN_PATH = os.path.join(defpaths.MYUTILS_PATH, "../../hypatia/satgenpy")
+sys.path.append(SATGEN_PATH)
 import satgen
 from satgen.post_analysis.print_routes_and_rtt import print_routes_and_rtt
+from satgen.post_analysis.print_graphical_routes_and_rtt import (
+    print_graphical_routes_and_rtt,
+)
+from satgen.post_analysis.analyze_path import analyze_path
+
 
 EARTH_RADIUS = 6378135.0
 
@@ -88,6 +94,8 @@ def process_states(states):
         MAX_GSL_LENGTH_M,
         MAX_ISL_LENGTH_M,
     )
+    with open(OUTPUT_PATH + "/timespec.txt") as f:
+        f.write(f"{states['time_step_ms']} {states['duration_s']}\n")
 
     ground_stations = satgen.read_ground_stations_extended(
         OUTPUT_PATH + "/ground_stations.txt"
@@ -120,3 +128,34 @@ def process_states(states):
     )
 
     return "ok"
+
+
+def calcRTT(states):
+    OUTPUT_PATH = defpaths.OUTPUT_PATH + "/" + states["fileName"] + "/output"
+    dur = 0
+    tStep = 0
+    with open(OUTPUT_PATH + "/timespec.txt", "r") as f:
+        l = f.readline()
+        l = l.split()
+        tStep = int(l[0])
+        dur = int(l[1])
+    print_routes_and_rtt(
+        OUTPUT_PATH + "/../analyze",
+        OUTPUT_PATH,
+        tStep,
+        dur,
+        states["src"],
+        states["dst"],
+        SATGEN_PATH + "/",
+    )
+    print_graphical_routes_and_rtt(
+        OUTPUT_PATH + "/../analyze",
+        OUTPUT_PATH,
+        tStep,
+        dur,
+        states["src"],
+        states["dst"],
+    )
+
+    return OUTPUT_PATH + "/../analyze"
+

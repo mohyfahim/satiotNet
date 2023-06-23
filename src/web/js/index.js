@@ -114,6 +114,15 @@ $(document).ready(function () {
       // $(document).find(".steps li").first().addClass("is-active");
     }else if (currentSectionIndex === 3){
       console.log("res");
+      let json = getJsonValueFromForm();
+      $(".lds-ring").show();
+      let resp = await eel.getResults(resultFileD, json)();
+      alert(resp);
+      $(".lds-ring").hide();
+
+      // $('iframe').attr('src', "file://" + resp);
+      // $("iframe").show();
+
     }
   });
 

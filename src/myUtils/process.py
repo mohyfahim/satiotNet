@@ -7,6 +7,7 @@ from myUtils import defpaths
 
 sys.path.append(os.path.join(defpaths.MYUTILS_PATH, "../../hypatia/satgenpy"))
 import satgen
+from satgen.post_analysis.print_routes_and_rtt import print_routes_and_rtt
 
 EARTH_RADIUS = 6378135.0
 
@@ -23,10 +24,12 @@ def process_states(states):
     )
     INPUT_PATH = TRY_PATH + "/" + "input"
     OUTPUT_PATH = TRY_PATH + "/" + "output"
+    ANALYZE_PATH = TRY_PATH + "/" + "analyze"
     if not os.path.isdir(TRY_PATH):
         os.makedirs(TRY_PATH, exist_ok=True)
         os.makedirs(INPUT_PATH, exist_ok=True)
         os.makedirs(OUTPUT_PATH, exist_ok=True)
+        os.makedirs(ANALYZE_PATH, exist_ok=True)
 
     if states["hasTleFile"] == True:
         with open(OUTPUT_PATH + "/tles.txt", "w") as tle:

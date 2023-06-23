@@ -16,7 +16,7 @@
           <li class="is-active">منظومه</li>
           <li>ایستگاه های زمینی</li>
           <li>فرآیند</li>
-          <li>تنظیمات شبیه سازی</li>
+          <li>نتایج</li>
         </ul>
         <form class="form-wrapper">
           <fieldset class="section is-active" id="constellation-page">
@@ -140,34 +140,105 @@
             <input type="checkbox" name="hasISL" id="hasISL" checked />
             <br />
             <label class="fixed-label" for="ALTITUDE_M">Altitude</label>
-            <input type="number" name="ALTITUDE_M" id="ALTITUDE_M" placeholder="550000"/>
+            <input
+              type="number"
+              name="ALTITUDE_M"
+              id="ALTITUDE_M"
+              placeholder="550000"
+            />
             <br />
-            <label class="fixed-label" for="SATELLITE_CONE_RADIUS_M">Satelite Conde Radius</label>
-            <input type="number" name="SATELLITE_CONE_RADIUS_M" id="SATELLITE_CONE_RADIUS_M" placeholder="940700" />
+            <label class="fixed-label" for="SATELLITE_CONE_RADIUS_M"
+              >Satelite Conde Radius</label
+            >
+            <input
+              type="number"
+              name="SATELLITE_CONE_RADIUS_M"
+              id="SATELLITE_CONE_RADIUS_M"
+              placeholder="940700"
+            />
             <br />
             <div id="rlAlgo">
               <h4>Relay Algorithms</h4>
-              <label class="fixed-label" for="algorithm_free_one_only_gs_relays">No ISLs, GSs Relay</label>
-              <input type="checkbox" name="algorithm_free_one_only_gs_relays" id="algorithm_free_one_only_gs_relays"  />
+              <label class="fixed-label" for="algorithm_free_one_only_gs_relays"
+                >No ISLs, GSs Relay</label
+              >
+              <input
+                type="checkbox"
+                name="algorithm_free_one_only_gs_relays"
+                id="algorithm_free_one_only_gs_relays"
+              />
               <br />
-              <label class="fixed-label" for="algorithm_free_one_only_over_isls">ISLs, One interface per Sat</label>
-              <input type="checkbox" name="algorithm_free_one_only_over_isls" id="algorithm_free_one_only_over_isls" checked />
+              <label class="fixed-label" for="algorithm_free_one_only_over_isls"
+                >ISLs, One interface per Sat</label
+              >
+              <input
+                type="checkbox"
+                name="algorithm_free_one_only_over_isls"
+                id="algorithm_free_one_only_over_isls"
+                checked
+              />
               <br />
               <!-- <label class="fixed-label" for="algorithm_free_one_only_gs_relays">ISLs, Multiple interface per Sat</label>
               <input type="checkbox" name="algorithm_free_one_only_gs_relays" id="algorithm_free_one_only_gs_relays" />
               <br /> -->
             </div>
             <br />
-            <label class="fixed-label" for="duration_s">مدت زمان شبیه سازی (s)</label>
-            <input type="number" name="duration_s" id="duration_s" placeholder="3600" />
+            <label class="fixed-label" for="duration_s"
+              >مدت زمان شبیه سازی (s)</label
+            >
+            <input
+              type="number"
+              name="duration_s"
+              id="duration_s"
+              placeholder="3600"
+            />
             <br />
-            <label class="fixed-label" for="time_step_ms">گام نمونه برداری (ms)</label>
-            <input type="number" name="time_step_ms" id="time_step_ms" placeholder="100" />
-          
+            <label class="fixed-label" for="time_step_ms"
+              >گام نمونه برداری (ms)</label
+            >
+            <input
+              type="number"
+              name="time_step_ms"
+              id="time_step_ms"
+              placeholder="100"
+            />
+
+            <br />
+            <div class="button">شروع شبیه سازی</div>
           </fieldset>
           <fieldset class="section">
-            <h3>Aتنظیمات شبیه سازی</h3>
-            <div class="button">شروع شبیه سازی</div>
+            <h3>نتایج</h3>
+            <label for="rfile" class="drop-container" id="rlabel">
+              <span class="drop-title">انتخاب پوشه شبیه سازی</span>
+              یا
+              <input
+                type="file"
+                name="resultDirectory"
+                onchange="selectFolder(event)"
+                id="rfile"
+                placeholder="پوشه نتایج شبیه سازی"
+                webkitdirectory="true"
+                directory
+              />
+            </label>
+            <br />
+            <br />
+            <label class="fixed-label" for="src">شماره مبداء</label>
+            <input
+              type="number"
+              name="src"
+              id="src"
+              placeholder="Source groundStation ID + number of sats"
+            />
+            <br />
+            <label class="fixed-label" for="dst">شماره مقصد</label>
+            <input
+              type="number"
+              name="dst"
+              id="dst"
+              placeholder="Dest groundStation ID + number of sats"
+            />
+            <div class="button">شروع محاسبه پارامترها</div>
           </fieldset>
         </form>
       </div>

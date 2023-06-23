@@ -1,3 +1,7 @@
+
+
+var resultFileD = "";
+
 function getJsonValueFromForm() {
   const formElement = document.querySelector("form");
   const formData = new FormData(formElement);
@@ -8,6 +12,13 @@ function getJsonValueFromForm() {
   var json = JSON.stringify(object);
   console.log(json);
   return json;
+}
+function selectFolder(e) {
+  var theFiles = e.target.files;
+  var relativePath = theFiles[0].webkitRelativePath;
+  var folder = relativePath.split("/");
+  resultFileD = folder[0];
+  console.log(resultFileD);
 }
 
 function getBinaryStringFromFile(file) {
@@ -74,14 +85,15 @@ $(document).ready(function () {
     var currentSection = button.parents(".section");
     var currentSectionIndex = currentSection.index();
     var headerSection = $(".steps li").eq(currentSectionIndex);
-    currentSection.removeClass("is-active").next().addClass("is-active");
-    headerSection.removeClass("is-active").next().addClass("is-active");
 
     $(".form-wrapper").submit(function (e) {
       e.preventDefault();
     });
 
-    if (currentSectionIndex === 3) {
+    if (currentSectionIndex === 2) {
+      currentSection.removeClass("is-active").next().addClass("is-active");
+      headerSection.removeClass("is-active").next().addClass("is-active");
+  
       console.log("start");
       let files = document.querySelectorAll("input[type=file]");
       let sendFile = [];
@@ -98,8 +110,10 @@ $(document).ready(function () {
       let resp = await eel.getFormData(json, JSON.stringify(sendFile))();
       alert(resp);
       //TODO: go to result page
-      $(document).find(".form-wrapper .section").first().addClass("is-active");
-      $(document).find(".steps li").first().addClass("is-active");
+      // $(document).find(".form-wrapper .section").first().addClass("is-active");
+      // $(document).find(".steps li").first().addClass("is-active");
+    }else if (currentSectionIndex === 3){
+      console.log("res");
     }
   });
 

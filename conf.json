@@ -1,0 +1,101 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "/home/mohy/work/satiotNet/src/main.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "ascii",
+   "value": false
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "embed_manifest",
+   "value": true
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "win_private_assemblies",
+   "value": false
+  },
+  {
+   "optionDest": "win_no_prefer_redirects",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/mohy/work/satiotNet/hypatia/satgenpy:satgenpy/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/mohy/work/satiotNet/src:src/"
+  },
+  {
+   "optionDest": "pathex",
+   "value": "/home/mohy/work/satiotNet/venv/bin"
+  },
+  {
+   "optionDest": "pathex",
+   "value": "/home/mohy/work/satiotNet/venv/lib/python3.10/site-packages"
+  },
+  {
+   "optionDest": "pathex",
+   "value": "/home/mohy/work/satiotNet/hypatia/satgenpy"
+  },
+  {
+   "optionDest": "pathex",
+   "value": "/home/mohy/work/satiotNet/src"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/mohy/work/satiotNet/src/web:web/"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

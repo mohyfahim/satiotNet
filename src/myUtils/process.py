@@ -31,6 +31,7 @@ def process_states(states):
     INPUT_PATH = TRY_PATH + "/" + "input"
     OUTPUT_PATH = TRY_PATH + "/" + "output"
     ANALYZE_PATH = TRY_PATH + "/" + "analyze"
+    SAT_NUMBERS = states["tleInfo"]["NUM_ORBS"] * states["tleInfo"]["NUM_SATS_PER_ORB"]
     if not os.path.isdir(TRY_PATH):
         os.makedirs(TRY_PATH, exist_ok=True)
         os.makedirs(INPUT_PATH, exist_ok=True)
@@ -40,6 +41,7 @@ def process_states(states):
     if states["hasTleFile"] == True:
         with open(OUTPUT_PATH + "/tles.txt", "w") as tle:
             tle.write(states["tleFile"]["content"])
+
     else:
         print("Generating TLEs...")
         if states["tleInfo"]["ECCENTRICITY"] == 0:
@@ -67,7 +69,6 @@ def process_states(states):
         return "error, ground station error"
 
     print("Generating ISLs...")
-
     if states["hasISL"] == True:
         satgen.generate_plus_grid_isls(
             OUTPUT_PATH + "/isls.txt",
@@ -78,6 +79,7 @@ def process_states(states):
         )
     else:
         satgen.generate_empty_isls(OUTPUT_PATH + "/isls.txt")
+        SAT_NUMBERS = (states["tleFile"]["content"].count("\n") - 1) // 3
 
     MAX_GSL_LENGTH_M = math.sqrt(
         math.pow(states["SATELLITE_CONE_RADIUS_M"], 2)
@@ -94,7 +96,7 @@ def process_states(states):
         MAX_GSL_LENGTH_M,
         MAX_ISL_LENGTH_M,
     )
-    with open(OUTPUT_PATH + "/timespec.txt") as f:
+    with open(OUTPUT_PATH + "/timespec.txt", "w") as f:
         f.write(f"{states['time_step_ms']} {states['duration_s']}\n")
 
     ground_stations = satgen.read_ground_stations_extended(
@@ -102,10 +104,10 @@ def process_states(states):
     )
     gsl_interfaces_per_satellite = 1
 
-    print("Generating GSL interfaces info..")
+    print("Generating GSL interfaces info.. ", SAT_NUMBERS)
     satgen.generate_simple_gsl_interfaces_info(
         OUTPUT_PATH + "/gsl_interfaces_info.txt",
-        states["tleInfo"]["NUM_ORBS"] * states["tleInfo"]["NUM_SATS_PER_ORB"],
+        SAT_NUMBERS,
         len(ground_stations),
         gsl_interfaces_per_satellite,  # GSL interfaces per satellite
         1,  # (GSL) Interfaces per ground station
@@ -157,5 +159,7 @@ def calcRTT(states):
         states["dst"],
     )
 
+    # analyze_path(
+    #     OUTPUT_PATH + "/../analyze", OUTPUT_PATH, tStep, dur, SATGEN_PATH + "/"
+    # )
     return OUTPUT_PATH + "/../analyze"
-
